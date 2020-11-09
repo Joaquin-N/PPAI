@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaz.InterfazDispositivoMovil">
+   <children>
+      <Button layoutX="117.0" layoutY="509.0" mnemonicParsing="false" text="Marcar como servido" />
+      <Label layoutX="39.0" layoutY="34.0" text="Mozo: Juan Perez " />
+      <TableView fx:id="tvPedidos" layoutX="35.0" layoutY="69.0" prefHeight="410.0" prefWidth="280.0">
+        <columns>
+          <TableColumn fx:id="colMesa" prefWidth="101.0" text="N° Mesa" />
+          <TableColumn fx:id="colCantidad" prefWidth="145.0" text="Cantidad de productos" />
+            <TableColumn fx:id="colCheck" prefWidth="33.0" />
+        </columns>
+      </TableView>
+      <ImageView fx:id="ivCampana" fitHeight="53.0" fitWidth="57.0" layoutX="277.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</Pane>
