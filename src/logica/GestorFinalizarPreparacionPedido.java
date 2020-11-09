@@ -3,6 +3,10 @@ package logica;
 public class GestorFinalizarPreparacionPedido
 {
 
+    private Pedido datosPedidoEnPreparacion;
+
+
+
     public void finalizarPedido()
     {
 
