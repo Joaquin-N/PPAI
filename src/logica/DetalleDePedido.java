@@ -1,87 +1,97 @@
 package logica;
 
+import java.util.Date;
+
 public class DetalleDePedido
 {
-    private String producto;
-    private String menu;
     private int cantidad;
-    private int mesa;
-    private String mozo;
-    private String seccion;
-    private int hora;
-    private int minutos;
-    private String tiempo;
+    private String detFactura;
+    private HistorialEstado historialEstado;
+    private Date hora;
+    private Menu menu;
+    private double precio;
+    private String producto;
+    private float tiempo;
+    private Pedido pedido;
+    private ProductoDeCarta productoDeCarta;
 
-    public DetalleDePedido(String producto, String menu, int cantidad, int mesa, String mozo, String seccion, int hora, int minutos, String tiempo)
-    {
-        this.producto = producto;
-        this.menu = menu;
+
+
+    public DetalleDePedido(int cantidad, String detFactura, HistorialEstado historialEstado, Date hora, Menu menu, double precio, String producto, float tiempo, Pedido pedido, ProductoDeCarta productoDeCarta) {
         this.cantidad = cantidad;
-        this.mesa = mesa;
-        this.mozo = mozo;
-        this.seccion = seccion;
+        this.detFactura = detFactura;
+        this.historialEstado = historialEstado;
         this.hora = hora;
-        this.minutos = minutos;
+        this.menu = menu;
+        this.precio = precio;
+        this.producto = producto;
         this.tiempo = tiempo;
+        this.pedido = pedido;
+        this.productoDeCarta = productoDeCarta;
     }
 
-    public String getProducto()
-    {
-        return producto;
+    public Pedido getPedido() {
+        return pedido;
     }
-    public String getMenu()
-    {
-        return menu;
+
+    public ProductoDeCarta getProductoDeCarta() {
+        return productoDeCarta;
     }
-    public int getCantidad()
-    {
+
+    public int getCantidad() {
         return cantidad;
     }
-    public int getMesa()
-    {
-        return mesa;
+
+    public String getDetFactura() {
+        return detFactura;
     }
-    public String getMozo()
-    {
-        return mozo;
+
+    public HistorialEstado getHistorialEstado() {
+        return historialEstado;
     }
-    public String getSeccion()
-    {
-        return seccion;
-    }
-    public int getHora()
-    {
+
+    public Date getHora() {
         return hora;
     }
-    public int getMinutos() { return minutos; }
-    public String getTiempo() { return tiempo; }
 
-    public static DetalleDePedido[] generarDetalles()
-    {
-        return new DetalleDePedido[] {
-                new DetalleDePedido("Fideos", "Continental", 1, 6, "Ruben Gonzales", "6", 12, 15, "00:25"),
-                new DetalleDePedido("Ensalada", "Especial", 2, 2, "Andrea Fernandez", "2", 12, 10, "00:20"),
-                new DetalleDePedido("Tiramisú", "Postres", 2, 1, "Juan Perez", "1", 12, 15, "00:15"),
-                new DetalleDePedido("Milanesa", "Infantil", 3, 5, "Juan Perez", "5", 12, 0, "00:12"),
-                new DetalleDePedido("Pure", "Infantil", 3, 5, "Juan Perez", "5", 12, 0, "00:12"),
-    };
+    public Menu getMenu() {
+        return menu;
     }
 
-    public static DetalleDePedido[] generarDetalles2()
-    {
-        return new DetalleDePedido[] {
-                new DetalleDePedido("Milanesa", "Infantil", 6, 5, "Juan Perez", "5", 12, 0, "00:12"),
-                new DetalleDePedido("Pritty", "Bebidas", 2, 1, "Juan Perez", "1", 12, 15, "00:15"),
-        };
+    public double getPrecio() {
+        return precio;
     }
 
-    public static DetalleDePedido[] generarDetalles3()
-    {
-        return new DetalleDePedido[] {
-                new DetalleDePedido("Fideos", "Continental", 1, 6, "Ruben Gonzales", "6", 12, 15, "00:25"),
-                new DetalleDePedido("Ensalada", "Especial", 2, 2, "Andrea Fernandez", "2", 12, 10, "00:20"),
-                new DetalleDePedido("Pritty", "Bebidas", 2, 1, "Juan Perez", "1", 12, 15, "00:15"),
-                new DetalleDePedido("Milanesa", "Infantil", 6, 5, "Juan Perez", "5", 12, 0, "00:12"),
-        };
+    public String getProducto() {
+        return producto;
+    }
+
+    public float getTiempo() {
+        return tiempo;
+    }
+
+    public boolean estaEnPreparacion(){
+        if(obtenerUltimoEstado()){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean obtenerUltimoEstado() {
+        if(historialEstado.esEnPreparacion()){
+            return true;
+        }
+        return false;
+    }
+
+    private String mostrarNombreProducto(){
+        return productoDeCarta.mostrarProductos();
+    }
+
+    private String mostrarNombreMenu(){
+        return menu.getNombre();
+    }
+    private int mostrarMesa(){
+        return pedido.mostrarMesa();
     }
 }

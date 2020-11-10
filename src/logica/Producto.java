@@ -2,6 +2,7 @@ package logica;
 
 public class Producto
 {
+
     private String fechaCreacion;
     private String foto;
     private String nombre;
@@ -19,6 +20,7 @@ public class Producto
         this.sectorComanda = sectorComanda;
         this.tiempoPresen = tiempoPresen;
     }
+
 
     public String getNombre() {
         return nombre;

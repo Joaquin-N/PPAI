@@ -3,6 +3,7 @@ package logica;
 
 public class Menu
 {
+
     private int cantidadMinimaComensales;
     private String comentarios;
     private String detalleDeMenu[];
@@ -23,9 +24,13 @@ public class Menu
         this.precio = precio;
     }
 
+
+
     public String getNombre() {
         return nombre;
     }
+
+
 
 
 }

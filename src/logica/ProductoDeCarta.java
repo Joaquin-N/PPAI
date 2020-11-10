@@ -2,6 +2,7 @@ package logica;
 
 public class ProductoDeCarta
 {
+
     private boolean esFavorito;
     private long precio;
     private Producto producto;
@@ -12,7 +13,13 @@ public class ProductoDeCarta
         this.producto = producto;
     }
 
-    public String mostrarProducto(){
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public String mostrarProductos(){
+
         return producto.getNombre();
     }
 }
