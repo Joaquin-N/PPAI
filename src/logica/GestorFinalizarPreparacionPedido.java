@@ -2,6 +2,7 @@ package logica;
 
 import interfaz.IObserverPedidoListo;
 import interfaz.PantallaFinalizarPreparacionPedido;
+import javafx.event.ActionEvent;
 
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
@@ -218,7 +219,7 @@ public class GestorFinalizarPreparacionPedido implements ISujetoPedidoListo
 
     private void finCasoUso()
     {
-        detallesPedidoSeleccionadosAServir.clear();
         System.out.println("Caso de uso finalizado");
+        pantalla.tomarOpcionFinalizarPedido(new ActionEvent());
     }
 }

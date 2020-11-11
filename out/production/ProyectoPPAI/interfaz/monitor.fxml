@@ -6,12 +6,11 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaz.InterfazMonitor">
    <children>
       <Button layoutX="320.0" layoutY="331.0" mnemonicParsing="false" text="Marcar como servido" />
-      <Label layoutX="39.0" layoutY="34.0" text="Piso 1" />
-      <TableView fx:id="tvPedidos" layoutX="33.0" layoutY="65.0" prefHeight="241.0" prefWidth="415.0">
+      <TableView fx:id="tvPedidos" layoutX="33.0" layoutY="49.0" prefHeight="257.0" prefWidth="415.0">
         <columns>
           <TableColumn fx:id="colMesa" prefWidth="186.0" text="N° Mesa" />
-          <TableColumn fx:id="colCantidad" prefWidth="201.0" text="Cant. de productos" />
-            <TableColumn fx:id="colCheck" prefWidth="27.0" />
+          <TableColumn fx:id="colCantidad" prefWidth="196.0" text="Cant. de productos" />
+            <TableColumn fx:id="colCheck" prefWidth="32.0" />
         </columns>
       </TableView>
    </children>

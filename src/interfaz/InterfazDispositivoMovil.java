@@ -16,6 +16,8 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 import java.io.File;
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +37,8 @@ public class InterfazDispositivoMovil implements IObserverPedidoListo
 
     private List<Integer> nroMesas = new ArrayList<>();
     private List<Integer> cantProductos = new ArrayList<>();
+
+    LocalTime ultimoAviso;
 
     public void initialize()
     {
@@ -81,10 +85,15 @@ public class InterfazDispositivoMovil implements IObserverPedidoListo
 
     private void emitirAviso()
     {
-        ivCampana.setVisible(true);
-        String musicFile = "src/resources/bip_sonoro.mp3";
-        Media bipSound = new Media(new File(musicFile).toURI().toString());
-        MediaPlayer player = new MediaPlayer(bipSound);
-        player.play();
+        LocalTime horaActual = LocalTime.now();
+        if(ultimoAviso == null || ChronoUnit.SECONDS.between(ultimoAviso, horaActual) > 2)
+        {
+            ultimoAviso = horaActual;
+            ivCampana.setVisible(true);
+            String musicFile = "src/resources/bip_sonoro.mp3";
+            Media bipSound = new Media(new File(musicFile).toURI().toString());
+            MediaPlayer player = new MediaPlayer(bipSound);
+            player.play();
+        }
     }
 }
