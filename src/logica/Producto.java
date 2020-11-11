@@ -2,27 +2,20 @@ package logica;
 
 public class Producto
 {
-
-    private String fechaCreacion;
-    private String foto;
     private String nombre;
-    private long precio;
-    private String receta;
-    private String sectorComanda;
-    private String tiempoPresen;
 
-    public Producto(String fechaCreacion, String foto, String nombre, long precio, String receta, String sectorComanda, String tiempoPresen) {
-        this.fechaCreacion = fechaCreacion;
-        this.foto = foto;
+    public Producto(String nombre)
+    {
         this.nombre = nombre;
-        this.precio = precio;
-        this.receta = receta;
-        this.sectorComanda = sectorComanda;
-        this.tiempoPresen = tiempoPresen;
     }
 
-
-    public String getNombre() {
+    public String getNombre()
+    {
         return nombre;
+    }
+
+    public void setNombre(String nombre)
+    {
+        this.nombre = nombre;
     }
 }

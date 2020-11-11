@@ -5,13 +5,11 @@ public class Estado
     private String ambito;
     private String nombre;
 
-
     public Estado(String ambito, String nombre)
     {
         this.ambito = ambito;
         this.nombre = nombre;
     }
-
 
     public boolean esAbierta()
     {
@@ -114,9 +112,10 @@ public class Estado
         return this.nombre.equals("Pendiente de preparacion");
     }
 
-
-    public String getNombre()
+    @Override
+    public boolean equals(Object o)
     {
-        return this.nombre;
+        Estado e = (Estado)o;
+        return e.nombre.equals(this.nombre) && e.ambito.equals(this.ambito);
     }
 }

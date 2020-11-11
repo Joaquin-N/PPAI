@@ -1,97 +1,120 @@
 package logica;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class DetalleDePedido
 {
     private int cantidad;
-    private String detFactura;
-    private HistorialEstado historialEstado;
-    private Date hora;
+    private LocalTime hora;
     private Menu menu;
-    private double precio;
-    private String producto;
-    private float tiempo;
     private Pedido pedido;
     private ProductoDeCarta productoDeCarta;
+    private ArrayList<HistorialEstado> historialEstados = new ArrayList<>();
 
+    private HistorialEstado ultimoHistorial;
 
-
-    public DetalleDePedido(int cantidad, String detFactura, HistorialEstado historialEstado, Date hora, Menu menu, double precio, String producto, float tiempo, Pedido pedido, ProductoDeCarta productoDeCarta) {
-        this.cantidad = cantidad;
-        this.detFactura = detFactura;
-        this.historialEstado = historialEstado;
+    public DetalleDePedido(Pedido pedido, Menu menu, ProductoDeCarta productoDeCarta, int cantidad, LocalTime hora)
+    {
+        historialEstados.add(new HistorialEstado(new Estado("Detalle Pedido", "En preparacion"), LocalDateTime.now()));
         this.hora = hora;
         this.menu = menu;
-        this.precio = precio;
-        this.producto = producto;
-        this.tiempo = tiempo;
+        this.cantidad = cantidad;
         this.pedido = pedido;
         this.productoDeCarta = productoDeCarta;
     }
 
-    public Pedido getPedido() {
-        return pedido;
+    public int getCantidad()
+    {
+        return cantidad;
+    }
+
+    public LocalTime getHora()
+    {
+        return hora;
     }
 
     public ProductoDeCarta getProductoDeCarta() {
         return productoDeCarta;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public String mostrarNombreProducto(){
+        return productoDeCarta.mostrarProducto();
     }
 
-    public String getDetFactura() {
-        return detFactura;
-    }
-
-    public HistorialEstado getHistorialEstado() {
-        return historialEstado;
-    }
-
-    public Date getHora() {
-        return hora;
-    }
-
-    public Menu getMenu() {
-        return menu;
-    }
-
-    public double getPrecio() {
-        return precio;
-    }
-
-    public String getProducto() {
-        return producto;
-    }
-
-    public float getTiempo() {
-        return tiempo;
-    }
-
-    public boolean estaEnPreparacion(){
-        if(obtenerUltimoEstado()){
-            return true;
-        }
-        return false;
-    }
-
-    private boolean obtenerUltimoEstado() {
-        if(historialEstado.esEnPreparacion()){
-            return true;
-        }
-        return false;
-    }
-
-    private String mostrarNombreProducto(){
-        return productoDeCarta.mostrarProductos();
-    }
-
-    private String mostrarNombreMenu(){
+    public String mostrarNombreMenu(){
         return menu.getNombre();
     }
-    private int mostrarMesa(){
+
+    public int mostrarMesa(){
         return pedido.mostrarMesa();
     }
+
+
+    public boolean estaEnPreparacion(Estado estado)
+    {
+        ultimoHistorial = obtenerUltimoEstado();
+        return ultimoHistorial.esEnPreparacion(estado);
+    }
+
+    public HistorialEstado obtenerUltimoEstado()
+    {
+        for (HistorialEstado hist: historialEstados)
+            if(hist.esUltimoHistorial()) return hist;
+        return null;
+    }
+
+    public void finalizar(Estado estado)
+    {
+        setearFinUltimoHistorial();
+        crearHistorial(estado);
+    }
+
+    public void notificar(Estado estado)
+    {
+        setearFinUltimoHistorial();
+        crearHistorial(estado);
+    }
+
+    private void setearFinUltimoHistorial()
+    {
+        ultimoHistorial.setFechaHoraFin(LocalDateTime.now());
+    }
+
+    private void crearHistorial(Estado estado)
+    {
+        ultimoHistorial = new HistorialEstado(estado, LocalDateTime.now());
+        historialEstados.add(ultimoHistorial);
+    }
+
+
+//    public static DetalleDePedido[] generarDetalles()
+//    {
+//        return new DetalleDePedido[] {
+//                new DetalleDePedido("Fideos", "Continental", 1, 6, "Ruben Gonzales", "6", 12, 15, "00:25"),
+//                new DetalleDePedido("Ensalada", "Especial", 2, 2, "Andrea Fernandez", "2", 12, 10, "00:20"),
+//                new DetalleDePedido("Tiramisú", "Postres", 2, 1, "Juan Perez", "1", 12, 15, "00:15"),
+//                new DetalleDePedido("Milanesa", "Infantil", 3, 5, "Juan Perez", "5", 12, 0, "00:12"),
+//                new DetalleDePedido("Pure", "Infantil", 3, 5, "Juan Perez", "5", 12, 0, "00:12"),
+//    };
+//    }
+//
+//    public static DetalleDePedido[] generarDetalles2()
+//    {
+//        return new DetalleDePedido[] {
+//                new DetalleDePedido("Milanesa", "Infantil", 6, 5, "Juan Perez", "5", 12, 0, "00:12"),
+//                new DetalleDePedido("Pritty", "Bebidas", 2, 1, "Juan Perez", "1", 12, 15, "00:15"),
+//        };
+//    }
+//
+//    public static DetalleDePedido[] generarDetalles3()
+//    {
+//        return new DetalleDePedido[] {
+//                new DetalleDePedido("Fideos", "Continental", 1, 6, "Ruben Gonzales", "6", 12, 15, "00:25"),
+//                new DetalleDePedido("Ensalada", "Especial", 2, 2, "Andrea Fernandez", "2", 12, 10, "00:20"),
+//                new DetalleDePedido("Pritty", "Bebidas", 2, 1, "Juan Perez", "1", 12, 15, "00:15"),
+//                new DetalleDePedido("Milanesa", "Infantil", 6, 5, "Juan Perez", "5", 12, 0, "00:12"),
+//        };
+//    }
 }

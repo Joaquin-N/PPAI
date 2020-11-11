@@ -1,15 +1,19 @@
 package logica;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class HistorialEstado
 {
     private Estado estado;
-    private Date fechaHoraFin;
-    private Date fechaHoraInicio;
+    private LocalDateTime fechaHoraFin;
+    private LocalDateTime fechaHoraInicio;
 
+    public void setFechaHoraFin(LocalDateTime fechaHoraFin)
+    {
+        this.fechaHoraFin = fechaHoraFin;
+    }
 
-    public HistorialEstado(Estado estado, Date fechaHoraInicio)
+    public HistorialEstado(Estado estado, LocalDateTime fechaHoraInicio)
     {
         this.estado = estado;
         this.fechaHoraInicio = fechaHoraInicio;
@@ -22,14 +26,9 @@ public class HistorialEstado
     }
 
 
-    public boolean esEnPreparacion()
+    public boolean esEnPreparacion(Estado est)
     {
-        return this.estado.esEnPreparacion();
+        return this.estado.equals(est);
     }
 
-
-    public void setFechaHoraFin(Date fechaHoraFin)
-    {
-        this.fechaHoraFin = fechaHoraFin;
-    }
 }

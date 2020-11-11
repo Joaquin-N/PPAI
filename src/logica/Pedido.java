@@ -12,13 +12,18 @@ public class Pedido
     private int nroPedido;
     private Mesa mesa;
 
-    public Pedido(int cantComensales, DetalleDePedido[] detalleDePedido, String factura, Date fechaHoraPed, HistorialEstado[] historialstado, int nroPedido) {
-        this.cantComensales = cantComensales;
-        this.detalleDePedido = detalleDePedido;
-        this.factura = factura;
-        this.fechaHoraPed = fechaHoraPed;
-        this.historialstado = historialstado;
-        this.nroPedido = nroPedido;
+//    public Pedido(int cantComensales, DetalleDePedido[] detalleDePedido, String factura, Date fechaHoraPed, HistorialEstado[] historialstado, int nroPedido) {
+//        this.cantComensales = cantComensales;
+//        this.detalleDePedido = detalleDePedido;
+//        this.factura = factura;
+//        this.fechaHoraPed = fechaHoraPed;
+//        this.historialstado = historialstado;
+//        this.nroPedido = nroPedido;
+//    }
+
+    public Pedido(Mesa mesa)
+    {
+        this.mesa = mesa;
     }
 
     public int getCantComensales() {
@@ -48,6 +53,7 @@ public class Pedido
     public int mostrarMesa(){
         return mesa.getNumero();
     }
+
 
 
 

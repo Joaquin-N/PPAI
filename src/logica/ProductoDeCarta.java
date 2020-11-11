@@ -2,24 +2,36 @@ package logica;
 
 public class ProductoDeCarta
 {
-
-    private boolean esFavorito;
-    private long precio;
+    private String nombre;
     private Producto producto;
 
-    public ProductoDeCarta(boolean esFavorito, long precio, Producto producto) {
-        this.esFavorito = esFavorito;
-        this.precio = precio;
+    public ProductoDeCarta(Producto producto)
+    {
         this.producto = producto;
     }
 
+    public String getNombre()
+    {
+        return nombre;
+    }
 
-    public Producto getProducto() {
+    public void setNombre(String nombre)
+    {
+        this.nombre = nombre;
+    }
+
+    public Producto getProducto()
+    {
         return producto;
     }
 
-    public String mostrarProductos(){
+    public void setProducto(Producto producto)
+    {
+        this.producto = producto;
+    }
 
+    public String mostrarProducto()
+    {
         return producto.getNombre();
     }
 }
