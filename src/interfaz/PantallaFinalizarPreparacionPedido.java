@@ -151,26 +151,6 @@ public class PantallaFinalizarPreparacionPedido
     public void tomarConfirmarElaboracion()
     {
         gestor.confirmarElaboracion();
-
-        // Elimina los detalles de la grilla
-//        List<String[]> temp1 = new ArrayList<>();
-//        List<BooleanProperty> temp2 = new ArrayList<>();
-//        tvPedidos.getItems().clear();
-//        int index = 0;
-//        for (int i = 0; i < listaDetallesEnPreparacion.size(); i++)
-//        {
-//            if (!listaDetallesAServir.get(i).getValue())
-//            {
-//                temp1.add(listaDetallesEnPreparacion.get(i));
-//                temp2.add(new SimpleBooleanProperty(false));
-//                tvPedidos.getItems().add(index);
-//                index++;
-//            }
-//        }
-//        System.out.println(listaDetallesEnPreparacion);
-//        System.out.println(temp1);
-//        listaDetallesEnPreparacion = temp1;
-//        listaDetallesAServir = temp2;
     }
 
     public void cancelar(ActionEvent actionEvent)

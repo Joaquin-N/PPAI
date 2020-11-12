@@ -87,9 +87,14 @@ public class GestorFinalizarPreparacionPedido implements ISujetoPedidoListo
     private void buscarDetallesPedidoEnPreparacion()
     {
         Estado estEnPreparacion = null;
+        List<Estado> estadosDetallePedido = new ArrayList<>();
 
         for (Estado est: listaEstados)
-            if(est.esAmbitoDetallePedido() && est.esEnPreparacion())
+            if(est.esAmbitoDetallePedido())
+                estadosDetallePedido.add(est);
+
+        for (Estado est: estadosDetallePedido)
+            if(est.esEnPreparacion())
             {
                 estEnPreparacion = est;
                 break;
@@ -128,7 +133,8 @@ public class GestorFinalizarPreparacionPedido implements ISujetoPedidoListo
     }
 
     private String buscarInfoDetallePedido(DetalleDePedido det)
-    {   String nombre;
+    {
+        String nombre;
         if(det.getProductoDeCarta() != null) nombre = det.mostrarNombreProducto();
         else nombre = det.mostrarNombreMenu();
         return nombre;
@@ -155,9 +161,14 @@ public class GestorFinalizarPreparacionPedido implements ISujetoPedidoListo
     private void actualizarEstadoDetallePedido()
     {
         Estado estListoParaServir = null;
+        List<Estado> estadosDetallePedido = new ArrayList<>();
 
         for (Estado est: listaEstados)
-            if(est.esAmbitoDetallePedido() && est.esListoParaServir())
+            if(est.esAmbitoDetallePedido())
+                estadosDetallePedido.add(est);
+
+        for (Estado est: estadosDetallePedido)
+            if(est.esListoParaServir())
             {
                 estListoParaServir = est;
                 break;
@@ -181,13 +192,14 @@ public class GestorFinalizarPreparacionPedido implements ISujetoPedidoListo
         IObserverPedidoListo[] o = {observadorMonitor, observadorMovil};
         suscribir(o);
         notificar();
-        quitar(o);
     }
 
     @Override
     public void suscribir(IObserverPedidoListo[] o)
     {
-        observadoresSuscriptos.addAll(Arrays.asList(o));
+        for (IObserverPedidoListo obs :o)
+            if(!observadoresSuscriptos.contains(obs))
+                observadoresSuscriptos.add(obs);
     }
 
     @Override
@@ -208,12 +220,19 @@ public class GestorFinalizarPreparacionPedido implements ISujetoPedidoListo
     private void actualizarEstadoNotificado()
     {
         Estado estNotificado = null;
+        List<Estado> estadosDetallePedido = new ArrayList<>();
+
         for (Estado est: listaEstados)
-            if(est.esAmbitoDetallePedido() && est.esNotificado())
+            if(est.esAmbitoDetallePedido())
+                estadosDetallePedido.add(est);
+
+        for (Estado est: estadosDetallePedido)
+            if(est.esNotificado())
             {
                 estNotificado = est;
                 break;
             }
+
         detalleActual.notificar(estNotificado);
     }
 

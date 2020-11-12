@@ -34,7 +34,7 @@ public class GeneradorDatos
                 new Menu("Continental"),
                 null,
                 2,
-                LocalTime.of(9,15)
+                LocalTime.of(9,10)
         ));
 
         detalles.add(new DetalleDePedido(
@@ -42,7 +42,7 @@ public class GeneradorDatos
                 new Menu("Americano"),
                 null,
                 4,
-                LocalTime.of(9,20)
+                LocalTime.of(9,5)
         ));
 
         detalles.add(new DetalleDePedido(
@@ -58,7 +58,7 @@ public class GeneradorDatos
                 new Menu("Papas Fritas"),
                 null,
                 3,
-                LocalTime.of(9,10)
+                LocalTime.of(9,8)
         ));
 
         detalles.add(new DetalleDePedido(
@@ -66,7 +66,7 @@ public class GeneradorDatos
                 new Menu("Parrillada"),
                 null,
                 1,
-                LocalTime.of(9,15)
+                LocalTime.of(8,57)
         ));
 
         detalles.add(new DetalleDePedido(
@@ -74,7 +74,7 @@ public class GeneradorDatos
                 null,
                 new ProductoDeCarta(new Producto("Hamburguesa")),
                 3,
-                LocalTime.of(9,15)
+                LocalTime.of(9,3)
         ));
 
         detalles.add(new DetalleDePedido(
@@ -82,7 +82,7 @@ public class GeneradorDatos
                 null,
                 new ProductoDeCarta(new Producto("Sushi")),
                 2,
-                LocalTime.of(9,12)
+                LocalTime.of(9,11)
         ));
 
         detalles.add(new DetalleDePedido(
@@ -90,7 +90,7 @@ public class GeneradorDatos
                 new Menu("Continental"),
                 null,
                 2,
-                LocalTime.of(9,25)
+                LocalTime.of(8,49)
         ));
 
         detalles.add(new DetalleDePedido(
@@ -98,7 +98,7 @@ public class GeneradorDatos
                 null,
                 new ProductoDeCarta(new Producto("Empanadas")),
                 6,
-                LocalTime.of(9,20)
+                LocalTime.of(9,7)
         ));
 
         return detalles;

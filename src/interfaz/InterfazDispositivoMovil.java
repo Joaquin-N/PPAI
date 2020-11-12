@@ -37,6 +37,7 @@ public class InterfazDispositivoMovil implements IObserverPedidoListo
 
     private List<Integer> nroMesas = new ArrayList<>();
     private List<Integer> cantProductos = new ArrayList<>();
+    private String musicFile;
 
     LocalTime ultimoAviso;
 
@@ -46,6 +47,7 @@ public class InterfazDispositivoMovil implements IObserverPedidoListo
         Image image = new Image(file.toURI().toString());
         ivCampana.setImage(image);
         ivCampana.setVisible(false);
+        musicFile = "src/resources/bip_sonoro.mp3";
 
         colCantidad.setCellValueFactory(cellData -> {
             Integer rowIndex = cellData.getValue();
@@ -86,11 +88,10 @@ public class InterfazDispositivoMovil implements IObserverPedidoListo
     private void emitirAviso()
     {
         LocalTime horaActual = LocalTime.now();
-        if(ultimoAviso == null || ChronoUnit.SECONDS.between(ultimoAviso, horaActual) > 2)
+        if(ultimoAviso == null || ChronoUnit.SECONDS.between(ultimoAviso, horaActual) > 1)
         {
             ultimoAviso = horaActual;
             ivCampana.setVisible(true);
-            String musicFile = "src/resources/bip_sonoro.mp3";
             Media bipSound = new Media(new File(musicFile).toURI().toString());
             MediaPlayer player = new MediaPlayer(bipSound);
             player.play();
